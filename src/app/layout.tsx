@@ -2,15 +2,12 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
-import { ClerkProvider} from "@clerk/nextjs";
-const inter = Inter({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { ClerkProvider } from "@clerk/nextjs";
 
-const geistMono = Inter({
+const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -25,14 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    <html lang="en">
-      <body
-        className={`${inter.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-        <Toaster/>
-      </body>
-    </html>
+      <html lang="en">
+        <body className={`${inter.variable} font-sans antialiased`}>
+          {children}
+          <Toaster />
+        </body>
+      </html>
     </ClerkProvider>
   );
 }
